@@ -18,6 +18,10 @@
       <div v-for="task in completeTasks" v-bind:key="task.id">
         <TaskBase v-bind="task" />
       </div>
+      <hr />
+      <div>
+        <AddTaskBase />
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +29,7 @@
 <script>
 import { mapState } from 'vuex'
 import TaskBase from './TaskBase.vue'
+import AddTaskBase from './AddTaskBase.vue'
 
 export default {
   name: 'ToDoBase',
@@ -32,7 +37,8 @@ export default {
     deleteMe: String
   },
   components: {
-    TaskBase
+    TaskBase,
+    AddTaskBase,
   },
   computed: {
     ...mapState([

@@ -15,6 +15,19 @@ export const store = new Vuex.Store({
     loading: true
   },
   actions: {
+    addTask({ commit }, payload) {
+      axios.post(BaseUrl + '/tasks', {
+        ...payload,
+        complete: false,
+      }).then((response) => {
+        commit('addTask', response.data)
+      })
+    },
+    deleteTask({ commit }, id) {
+      axios.delete(BaseUrl + '/tasks/' + id).then(() => {
+        commit('deleteTask', id)
+      })
+    },
     loadTasks({ commit }) {
       axios.get(BaseUrl + '/tasks').then((response) => {
         commit('updateTasks', response.data)
@@ -26,17 +39,26 @@ export const store = new Vuex.Store({
         ...payload,
       }).then((response) => {
         commit('updateTask', response.data)
-        commit('changeLoadingState', false)
       })
     },
-    deleteTask({ commit }, id) {
-      axios.delete(BaseUrl + '/tasks/' + id).then(() => {
-        commit('deleteTask', id)
-        commit('changeLoadingState', false)
-      })
-    }
   },
   mutations: {
+    addTask(state, task) {
+      const newTasks = [
+        ...state.tasks,
+        task
+      ]
+      state.tasks = newTasks
+    },
+    deleteTask(state, id) {
+      const newTasks = [
+        ...state.tasks,
+      ]
+      state.tasks = _.reject(newTasks, { 'id': id })
+    },
+    changeLoadingState(state, loading) {
+      state.loading = loading
+    },
     updateTask(state, task) {
       const itemIndex = state.tasks.findIndex(item => item.id === task.id)
       const newTasks = [
@@ -45,29 +67,20 @@ export const store = new Vuex.Store({
       newTasks[itemIndex] = task;
       state.tasks = newTasks;
     },
-    deleteTask(state, id) {
-      const newTasks = [
-        ...state.tasks,
-      ]
-      state.tasks = _.without(newTasks, { 'id': id })
-    },
     updateTasks(state, tasks) {
       state.tasks = tasks;
     },
-    changeLoadingState(state, loading) {
-      state.loading = loading
-    }
   },
   getters: {
+    completeTasks: state => {
+      return _.filter(state.tasks, (task) => {
+        return task.complete === true;
+      })
+    },
     incompleteTasks: state => {
       return _.filter(state.tasks, (task) => {
         return task.complete === false;
       })
     },
-    completeTasks: state => {
-      return _.filter(state.tasks, (task) => {
-        return task.complete === true;
-      })
-    }
   },
 })
