@@ -1,6 +1,7 @@
 <template>
   <div>
-    <b-form @submit="onSubmit">
+    <button @click="openForm" v-show="!formOpen">+</button>
+    <b-form @submit="onSubmit" v-show="formOpen">
       <b-form-input
           id="input-1"
           v-model="form.name"
@@ -13,11 +14,13 @@
         <b-form-radio v-model="form.type" name="some-radios" value="event">Event</b-form-radio>
       </b-form-group>
       <b-button type="submit" variant="primary">Submit</b-button>
+      <b-button type="button" variant="secondary" @click="closeForm">Close</b-button>
     </b-form>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'AddTaskBase',
   data() {
@@ -28,7 +31,18 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState([
+      'formOpen',
+    ]),
+  },
   methods: {
+    openForm() {
+      this.$store.dispatch('updateAddTaskFormOpen', true)
+    },
+    closeForm() {
+      this.$store.dispatch('updateAddTaskFormOpen', false)
+    },
     onSubmit(evt) {
       evt.preventDefault()
       this.$store.dispatch('addTask', this.form)

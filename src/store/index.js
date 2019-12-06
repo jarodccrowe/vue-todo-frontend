@@ -10,9 +10,10 @@ const BaseUrl = 'https://my-json-server.typicode.com/jarodccrowe/vue-todo';
 
 export const store = new Vuex.Store({
   state: {
-    msg: 'Testing2',
     tasks: [],
-    loading: true
+    openEditTaskForms: [],
+    loading: true,
+    formOpen: false
   },
   actions: {
     addTask({ commit }, payload) {
@@ -34,6 +35,12 @@ export const store = new Vuex.Store({
         commit('changeLoadingState', false)
       })
     },
+    updateAddTaskFormOpen({ commit }, isOpen) {
+      commit('updateAddTaskFormOpen', isOpen)
+    },
+    updateEditTaskFormOpen({ commit }, { id, isOpen }) {
+      commit('updateEditTaskFormOpen', { id, isOpen })
+    },
     updateTask({ commit }, payload) {
       axios.patch(BaseUrl + '/tasks/' + payload.id, {
         ...payload,
@@ -51,19 +58,29 @@ export const store = new Vuex.Store({
       state.tasks = newTasks
     },
     deleteTask(state, id) {
-      const newTasks = [
-        ...state.tasks,
-      ]
+      const newTasks = [ ...state.tasks ]
       state.tasks = _.reject(newTasks, { 'id': id })
     },
     changeLoadingState(state, loading) {
       state.loading = loading
     },
+    updateAddTaskFormOpen(state, isOpen) {
+      state.formOpen = isOpen
+    },
+    updateEditTaskFormOpen(state, { id, isOpen }) {
+      const newOpenEditTaskForms = [ ...state.openEditTaskForms ]
+      const getNewOpenEditTaskFormsList = () => {
+        if (isOpen === true) {
+          newOpenEditTaskForms.push(id)
+          return newOpenEditTaskForms
+        }
+        return _.without(newOpenEditTaskForms, id)
+      }
+      state.openEditTaskForms = getNewOpenEditTaskFormsList()
+    },
     updateTask(state, task) {
       const itemIndex = state.tasks.findIndex(item => item.id === task.id)
-      const newTasks = [
-        ...state.tasks,
-      ]
+      const newTasks = [ ...state.tasks ]
       newTasks[itemIndex] = task;
       state.tasks = newTasks;
     },
