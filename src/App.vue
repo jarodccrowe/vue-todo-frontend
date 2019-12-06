@@ -1,18 +1,20 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <ToDo msg="Welcome to Your Vue.js App"/>
+    <ToDoBase />
   </div>
 </template>
 
 <script>
-import ToDo from './components/ToDo.vue'
+import ToDoBase from './components/ToDoBase.vue'
+import { store } from './store'
 
 export default {
   name: 'app',
   components: {
-    ToDo
-  }
+    ToDoBase
+  },
+  store,
 }
 </script>
 

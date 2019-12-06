@@ -5,11 +5,16 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
-  }
+    deleteMe: String
+  },
+  computed: mapState([
+    'msg',
+  ])
 }
 </script>
 
