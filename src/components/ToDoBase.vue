@@ -11,15 +11,12 @@
       <div class="text-center pt-3" v-if="loading">
         <b-spinner label="Spinning"></b-spinner>
       </div>
-      <div v-for="task in tasks.incomplete" v-bind:key="task.id">
-        <TaskBase :data=task />
+      <div v-for="task in tasks" v-bind:key="task.id">
+        <TaskBase v-bind="task" />
       </div>
       <hr />
       <div class="text-center pt-3" v-if="loading">
         <b-spinner label="Spinning"></b-spinner>
-      </div>
-      <div v-for="task in tasks.complete" v-bind:key="task.id">
-        <TaskBase :data=task />
       </div>
     </div>
   </div>

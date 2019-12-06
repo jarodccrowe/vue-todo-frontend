@@ -1,20 +1,25 @@
 <template>
   <div>
-    {{data.type}}
-    {{data.name}}
+    {{type}}
+    {{name}}
+    {{complete ? 'yes' : 'no'}}
+    <button @click="toggleTaskCompleted(id, complete)">Complete</button>
   </div>
 </template>
 
 <script>
-
+import { mapActions } from 'vuex'
 export default {
   name: 'TaskBase',
   props: {
-    data: {
-      name: String,
-      type: String,
-    }
+    name: String,
+    type: String,
+    complete: Boolean,
+    id: Number,
   },
+  methods: mapActions([
+    'toggleTaskCompleted',
+  ])
 }
 </script>
 

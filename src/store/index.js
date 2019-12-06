@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import _ from 'lodash';
 
 Vue.use(Vuex)
 Vue.config.devtools = true
@@ -10,29 +11,35 @@ const BaseUrl = 'https://my-json-server.typicode.com/jarodccrowe/vue-todo';
 export const store = new Vuex.Store({
   state: {
     msg: 'Testing2',
-    tasks: {
-      complete: [],
-      incomplete: [],
-    },
+    tasks: [],
     loading: true
   },
   actions: {
-    loadTasks({
-      commit
-    }) {
+    loadTasks({ commit }) {
       axios.get(BaseUrl + '/tasks').then((response) => {
         commit('updateTasks', response.data)
         commit('changeLoadingState', false)
       })
-    }
+    },
+    toggleTaskCompleted({ commit }, taskId, complete) {
+      axios.patch(BaseUrl + '/tasks/' + taskId, {
+        complete: !complete,
+      }).then((response) => {
+        commit('updateTask', response.data)
+        commit('changeLoadingState', false)
+      })
+    },
   },
   mutations: {
+    updateTask(state, task) {
+      state.tasks[task.id] = task;
+    },
     updateTasks(state, tasks) {
-      state.tasks.incomplete = tasks.filter(task => task.complete === false);
-      state.tasks.complete = tasks.filter(task => task.complete === true);
+      state.tasks = _.keyBy(tasks, 'id');
     },
     changeLoadingState(state, loading) {
       state.loading = loading
     }
-  }
+  },
+  getters: {},
 })
