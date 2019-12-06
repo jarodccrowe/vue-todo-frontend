@@ -15,6 +15,9 @@ export default {
     ToDoBase
   },
   store,
+  created() {
+    this.$store.dispatch('loadTasks')
+  }
 }
 </script>
 

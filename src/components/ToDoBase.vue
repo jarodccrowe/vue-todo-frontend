@@ -8,12 +8,13 @@
 import { mapState } from 'vuex'
 
 export default {
-  name: 'HelloWorld',
+  name: 'ToDoBase',
   props: {
     deleteMe: String
   },
   computed: mapState([
     'msg',
+    'tasks',
   ])
 }
 </script>
