@@ -3,7 +3,8 @@
     {{type}}
     {{name}}
     {{complete ? 'yes' : 'no'}}
-    <button @click="toggleTaskCompleted({ id, complete })">Complete</button>
+    <button @click="updateTask({ id, complete: !complete })">Complete</button>
+    <button @click="deleteTask(id)">Delete</button>
   </div>
 </template>
 
@@ -18,7 +19,8 @@ export default {
     id: Number,
   },
   methods: mapActions([
-    'toggleTaskCompleted',
+    'updateTask',
+    'deleteTask',
   ])
 }
 </script>

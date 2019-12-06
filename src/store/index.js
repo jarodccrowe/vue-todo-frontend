@@ -21,9 +21,9 @@ export const store = new Vuex.Store({
         commit('changeLoadingState', false)
       })
     },
-    toggleTaskCompleted({ commit }, payload) {
+    updateTask({ commit }, payload) {
       axios.patch(BaseUrl + '/tasks/' + payload.id, {
-        complete: !payload.complete,
+        ...payload,
       }).then((response) => {
         commit('updateTask', response.data)
         commit('changeLoadingState', false)
