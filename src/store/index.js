@@ -21,9 +21,9 @@ export const store = new Vuex.Store({
         commit('changeLoadingState', false)
       })
     },
-    toggleTaskCompleted({ commit }, taskId, complete) {
-      axios.patch(BaseUrl + '/tasks/' + taskId, {
-        complete: !complete,
+    toggleTaskCompleted({ commit }, payload) {
+      axios.patch(BaseUrl + '/tasks/' + payload.id, {
+        complete: !payload.complete,
       }).then((response) => {
         commit('updateTask', response.data)
         commit('changeLoadingState', false)
@@ -41,5 +41,16 @@ export const store = new Vuex.Store({
       state.loading = loading
     }
   },
-  getters: {},
+  getters: {
+    incompleteTasks: state => {
+      return _.pickBy(state.tasks, (task) => {
+        return task.complete === false;
+      })
+    },
+    completeTasks: state => {
+      return _.pickBy(state.tasks, (task) => {
+        return task.complete === true;
+      })
+    }
+  },
 })

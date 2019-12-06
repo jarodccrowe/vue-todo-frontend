@@ -9,14 +9,14 @@
     <hr />
     <div>
       <div class="text-center pt-3" v-if="loading">
-        <b-spinner label="Spinning"></b-spinner>
+        <b-spinner small label="Small Spinner" type="grow" class="text-info"></b-spinner>
       </div>
-      <div v-for="task in tasks" v-bind:key="task.id">
+      <div v-for="task in incompleteTasks" v-bind:key="task.id">
         <TaskBase v-bind="task" />
       </div>
       <hr />
-      <div class="text-center pt-3" v-if="loading">
-        <b-spinner label="Spinning"></b-spinner>
+      <div v-for="task in completeTasks" v-bind:key="task.id">
+        <TaskBase v-bind="task" />
       </div>
     </div>
   </div>
@@ -34,11 +34,18 @@ export default {
   components: {
     TaskBase
   },
-  computed: mapState([
-    'msg',
-    'tasks',
-    'loading',
-  ])
+  computed: {
+    ...mapState([
+      'msg',
+      'loading',
+    ]),
+    incompleteTasks () {
+      return this.$store.getters.incompleteTasks
+    },
+    completeTasks () {
+      return this.$store.getters.completeTasks
+    },
+  }
 }
 </script>
 

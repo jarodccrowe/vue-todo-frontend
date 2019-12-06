@@ -3,7 +3,7 @@
     {{type}}
     {{name}}
     {{complete ? 'yes' : 'no'}}
-    <button @click="toggleTaskCompleted(id, complete)">Complete</button>
+    <button @click="toggleTaskCompleted({ id, complete })">Complete</button>
   </div>
 </template>
 
