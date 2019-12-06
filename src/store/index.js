@@ -10,7 +10,10 @@ const BaseUrl = 'https://my-json-server.typicode.com/jarodccrowe/vue-todo';
 export const store = new Vuex.Store({
   state: {
     msg: 'Testing2',
-    tasks: [],
+    tasks: {
+      complete: [],
+      incomplete: [],
+    },
     loading: true
   },
   actions: {
@@ -25,7 +28,8 @@ export const store = new Vuex.Store({
   },
   mutations: {
     updateTasks(state, tasks) {
-      state.tasks = tasks
+      state.tasks.incomplete = tasks.filter(task => task.complete === false);
+      state.tasks.complete = tasks.filter(task => task.complete === true);
     },
     changeLoadingState(state, loading) {
       state.loading = loading

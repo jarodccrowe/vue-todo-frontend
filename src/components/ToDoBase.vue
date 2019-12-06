@@ -1,32 +1,41 @@
 <template>
   <div>
-    <h4>
+    <h5>
       Tasks
-    </h4>
-    <small>
+    </h5>
+    <div>
       {{ new Date() | moment("dddd, MMMM Do YYYY") }}
-    </small>
-    <div class="text-center" v-if="loading">
-      <b-spinner label="Spinning"></b-spinner>
-    </div>
-    <div v-for="task in tasks" v-bind:key="task.id">
-      {{task.type}}
-      {{task.name}}
     </div>
     <hr />
-    <h4>
-      Completed
-    </h4>
+    <div>
+      <div class="text-center pt-3" v-if="loading">
+        <b-spinner label="Spinning"></b-spinner>
+      </div>
+      <div v-for="task in tasks.incomplete" v-bind:key="task.id">
+        <TaskBase :data=task />
+      </div>
+      <hr />
+      <div class="text-center pt-3" v-if="loading">
+        <b-spinner label="Spinning"></b-spinner>
+      </div>
+      <div v-for="task in tasks.complete" v-bind:key="task.id">
+        <TaskBase :data=task />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import TaskBase from './TaskBase.vue'
 
 export default {
   name: 'ToDoBase',
   props: {
     deleteMe: String
+  },
+  components: {
+    TaskBase
   },
   computed: mapState([
     'msg',
