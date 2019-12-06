@@ -29,13 +29,30 @@ export const store = new Vuex.Store({
         commit('changeLoadingState', false)
       })
     },
+    deleteTask({ commit }, id) {
+      axios.delete(BaseUrl + '/tasks/' + id).then(() => {
+        commit('deleteTask', id)
+        commit('changeLoadingState', false)
+      })
+    }
   },
   mutations: {
     updateTask(state, task) {
-      state.tasks[task.id] = task;
+      const itemIndex = state.tasks.findIndex(item => item.id === task.id)
+      const newTasks = [
+        ...state.tasks,
+      ]
+      newTasks[itemIndex] = task;
+      state.tasks = newTasks;
+    },
+    deleteTask(state, id) {
+      const newTasks = [
+        ...state.tasks,
+      ]
+      state.tasks = _.without(newTasks, { 'id': id })
     },
     updateTasks(state, tasks) {
-      state.tasks = _.keyBy(tasks, 'id');
+      state.tasks = tasks;
     },
     changeLoadingState(state, loading) {
       state.loading = loading
@@ -43,12 +60,12 @@ export const store = new Vuex.Store({
   },
   getters: {
     incompleteTasks: state => {
-      return _.pickBy(state.tasks, (task) => {
+      return _.filter(state.tasks, (task) => {
         return task.complete === false;
       })
     },
     completeTasks: state => {
-      return _.pickBy(state.tasks, (task) => {
+      return _.filter(state.tasks, (task) => {
         return task.complete === true;
       })
     }
