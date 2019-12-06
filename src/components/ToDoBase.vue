@@ -1,6 +1,9 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div>
+    <div v-for="task in tasks" v-bind:key="task.id">
+      {{task.type}}
+      {{task.name}}
+    </div>
   </div>
 </template>
 
@@ -33,6 +36,6 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #04b2e0;
 }
 </style>
