@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="text-md-left text-center">
-      <b-button variant="outline-dark" v-show="!formOpen" @click="openForm" >
-        <font-awesome-icon class="pointer" size="2x" :icon="['far', 'plus-square']"/>
-      </b-button>
+      <font-awesome-icon v-show="!formOpen" @click="openForm" class="pointer add-button" size="2x" :icon="['far', 'plus-square']"/>
     </div>
     <b-form @submit="onSubmit" v-if="formOpen" class="mt-2">
       <b-form-input
@@ -15,14 +13,20 @@
         v-focus
         class="mb-2"
       ></b-form-input>
-      <b-form-radio v-model="form.type" name="some-radios" value="task" class="mb-2">Task</b-form-radio>
-      <b-form-radio v-model="form.type" name="some-radios" value="event" class="mb-2">Event</b-form-radio>
+      <b-form-radio v-model="form.type" required name="some-radios" value="task" class="mb-2">Task</b-form-radio>
+      <b-form-radio v-model="form.type" required name="some-radios" value="event" class="mb-2">Event</b-form-radio>
       <b-row no-gutters class="mt-3">
         <b-col>
-          <b-button type="submit" variant="primary">Submit</b-button>
+          <b-button type="submit" variant="primary" class="btn-sm">Add Task</b-button>
         </b-col>
         <b-col class="text-right">
-          <b-button type="button" variant="secondary" @click="closeForm">Close</b-button>
+          <font-awesome-icon
+            @click="closeForm"
+            class="pointer"
+            v-if="!complete"
+            :icon="['far', 'times-circle']"
+            size="2x"
+          />
         </b-col>
       </b-row>
     </b-form>
@@ -68,4 +72,7 @@ export default {
 </script>
 
 <style scoped>
+.add-button:hover {
+  color: grey;
+}
 </style>

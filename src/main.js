@@ -13,6 +13,7 @@ import {
   faTrashAlt,
   faPlusSquare,
   faTimesCircle,
+  faCheckCircle,
 } from '@fortawesome/free-regular-svg-icons'
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -25,6 +26,7 @@ library.add(
   faPen,
   faPlusSquare,
   faTimesCircle,
+  faCheckCircle,
 )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)

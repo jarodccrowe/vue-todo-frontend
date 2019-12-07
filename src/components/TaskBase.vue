@@ -81,4 +81,10 @@ export default {
 .badge--task {
   width: 43px;
 }
+.trash-button:hover {
+  color: red;
+}
+.edit-button:hover {
+  color: grey;
+}
 </style>
