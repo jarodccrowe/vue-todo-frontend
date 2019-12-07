@@ -1,12 +1,13 @@
 <template>
   <div>
     <div>
+      <font-awesome-icon v-if="!complete" size="lg" :icon="['far', 'square']" @click="updateTask({ id, complete: !complete })"/>
+      <font-awesome-icon v-if="complete" size="lg" :icon="['far', 'check-square']" @click="updateTask({ id, complete: !complete })"/>
       {{type}}
       {{name}}
       {{complete ? 'yes' : 'no'}}
-      <b-button class="btn-sm" @click="updateTask({ id, complete: !complete })">Complete</b-button>
-      <b-button class="btn-sm" @click="deleteTask(id)">Delete</b-button>
-      <b-button class="btn-sm" @click="updateEditTaskFormOpen()">Edit</b-button>
+      <font-awesome-icon size="lg" :icon="['far', 'trash-alt']" @click="deleteTask(id)"/>
+      <font-awesome-icon size="lg" :icon="['fas', 'pen']" @click="updateEditTaskFormOpen()"/>
     </div>
     <div>
       <EditTaskBase v-if="editerIsOpen" :id="id" />
