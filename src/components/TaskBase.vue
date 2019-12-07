@@ -4,16 +4,17 @@
       <b-col cols="1">
         <font-awesome-icon
           class="pointer mr-3"
-          v-if="!complete"
+          v-if="!complete && !loading"
           :icon="['far', 'square']"
           @click="updateTask({ id, complete: !complete })"
         />
         <font-awesome-icon
           class="pointer mr-3"
-          v-if="complete"
+          v-if="complete && !loading"
           :icon="['far', 'check-square']"
           @click="updateTask({ id, complete: !complete })"
         />
+        <b-spinner v-if="loading" small label="Small Spinner" type="grow" class="text-info"></b-spinner>
       </b-col>
       <b-col>
         <b-row no-gutters>
@@ -58,6 +59,7 @@ export default {
     type: String,
     complete: Boolean,
     id: Number,
+    loading: Boolean,
   },
   computed: {
     editerIsOpen() {

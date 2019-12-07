@@ -42,10 +42,11 @@ export const store = new Vuex.Store({
       commit('updateEditTaskFormOpen', { id, isOpen })
     },
     updateTask({ commit }, payload) {
+      commit('changeTaskLoadingState', { id: payload.id, loadingState: true })
       axios.patch(BaseUrl + '/tasks/' + payload.id, {
         ...payload,
       }).then((response) => {
-        commit('updateTask', response.data)
+        commit('updateTask', { ...response.data, loading: false })
       })
     },
   },
@@ -63,6 +64,15 @@ export const store = new Vuex.Store({
     },
     changeLoadingState(state, loading) {
       state.loading = loading
+    },
+    changeTaskLoadingState(state, { id, loadingState }) {
+      const itemIndex = state.tasks.findIndex(item => item.id === id)
+      const newTasks = [ ...state.tasks ]
+      newTasks[itemIndex] = {
+        ...newTasks[itemIndex],
+        loading: loadingState,
+       };
+      state.tasks = newTasks;
     },
     updateAddTaskFormOpen(state, isOpen) {
       state.formOpen = isOpen
