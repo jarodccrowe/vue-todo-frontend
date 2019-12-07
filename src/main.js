@@ -7,16 +7,33 @@ import Moment from 'vue-moment';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
-import { faSquare, faCheckSquare, faTrashAlt } from '@fortawesome/free-regular-svg-icons'
+import {
+  faSquare,
+  faCheckSquare,
+  faTrashAlt,
+  faPlusSquare
+} from '@fortawesome/free-regular-svg-icons'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-library.add(faSquare, faCheckSquare, faTrashAlt, faPen)
+library.add(
+  faSquare,
+  faCheckSquare,
+  faTrashAlt,
+  faPen,
+  faPlusSquare,
+)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
+
+Vue.filter('capitalize', function (value) {
+  if (!value) return ''
+  value = value.toString()
+  return value.charAt(0).toUpperCase() + value.slice(1)
+})
 
 Vue.use(Vuex);
 Vue.use(BootstrapVue);

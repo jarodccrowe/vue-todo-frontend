@@ -32,4 +32,7 @@ export default {
 #app-logo {
   width: 100px;
 }
+.pointer {
+  cursor: pointer;
+}
 </style>

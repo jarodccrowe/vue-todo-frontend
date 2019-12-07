@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="openForm" v-show="!formOpen">+</button>
+    <font-awesome-icon @click="openForm" v-show="!formOpen" class="pointer" size="3x" :icon="['far', 'plus-square']"/>
     <b-form @submit="onSubmit" v-show="formOpen">
       <b-form-input
           id="input-1"

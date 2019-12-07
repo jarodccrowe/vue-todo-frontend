@@ -1,13 +1,12 @@
 <template>
   <div>
     <div>
-      <font-awesome-icon v-if="!complete" size="lg" :icon="['far', 'square']" @click="updateTask({ id, complete: !complete })"/>
-      <font-awesome-icon v-if="complete" size="lg" :icon="['far', 'check-square']" @click="updateTask({ id, complete: !complete })"/>
-      {{type}}
+      <font-awesome-icon class="pointer" v-if="!complete" size="lg" :icon="['far', 'square']" @click="updateTask({ id, complete: !complete })"/>
+      <font-awesome-icon class="pointer" v-if="complete" size="lg" :icon="['far', 'check-square']" @click="updateTask({ id, complete: !complete })"/>
+      <b-badge :variant="badgeVariant">{{type | capitalize}}</b-badge>
       {{name}}
-      {{complete ? 'yes' : 'no'}}
-      <font-awesome-icon size="lg" :icon="['far', 'trash-alt']" @click="deleteTask(id)"/>
-      <font-awesome-icon size="lg" :icon="['fas', 'pen']" @click="updateEditTaskFormOpen()"/>
+      <font-awesome-icon class="pointer" size="lg" :icon="['fas', 'pen']" @click="updateEditTaskFormOpen()"/>
+      <font-awesome-icon class="pointer" size="lg" :icon="['far', 'trash-alt']" @click="deleteTask(id)"/>
     </div>
     <div>
       <EditTaskBase v-if="editerIsOpen" :id="id" />
@@ -34,6 +33,9 @@ export default {
     editerIsOpen() {
       return _.indexOf(this.$store.state.openEditTaskForms, this.id) > -1
     },
+    badgeVariant() {
+      return this.type === "event" ? "success" : "info"
+    }
   },
   methods: {
     updateEditTaskFormOpen() {
