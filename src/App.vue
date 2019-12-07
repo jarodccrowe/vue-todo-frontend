@@ -28,6 +28,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   color: #0a374b;
+  max-width: 720px;
 }
 #app-logo {
   width: 100px;

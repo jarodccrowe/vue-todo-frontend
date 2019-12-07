@@ -1,36 +1,50 @@
 <template>
   <div>
-    <div class="row">
-      <div class="col-md-10">
+    <b-row no-gutters>
+      <b-col cols="1">
         <font-awesome-icon
           class="pointer mr-3"
           v-if="!complete"
-          size="lg"
+          size="sm"
           :icon="['far', 'square']"
           @click="updateTask({ id, complete: !complete })"
         />
         <font-awesome-icon
           class="pointer mr-3"
           v-if="complete"
-          size="lg"
+          size="sm"
           :icon="['far', 'check-square']"
           @click="updateTask({ id, complete: !complete })"
         />
-        <b-badge :variant="badgeVariant" class="mr-3 text-xs badge--task">{{type | capitalize}}</b-badge>
-        {{name}}
-      </div>
-      <div class="col-md-1">
+      </b-col>
+      <b-col>
+        <b-row no-gutters>
+          <b-col cols="2" md="1">
+            <small>
+              <b-badge :variant="badgeVariant" class="mr-3 badge--task">{{type | capitalize}}</b-badge>
+            </small>
+          </b-col>
+          <b-col>
+            <small>
+              {{name}}
+            </small>
+          </b-col>
+        </b-row>
+      </b-col>
+      <b-col class="text-right" cols="2">
         <font-awesome-icon
-          class="pointer"
-          size="lg"
+          class="pointer mr-3"
+          size="xs"
           :icon="['fas', 'pen']"
           @click="updateEditTaskFormOpen({ id: id, isOpen: !editerIsOpen })"
         />
-      </div>
-      <div class="col-md-1">
-        <font-awesome-icon class="pointer" size="lg" :icon="['far', 'trash-alt']" @click="deleteTask(id)"/>
-      </div>
-    </div>
+        <font-awesome-icon
+          class="pointer"
+          size="sm"
+          :icon="['far', 'trash-alt']" @click="deleteTask(id)"
+        />
+      </b-col>
+    </b-row>
     <div>
       <EditTaskBase v-if="editerIsOpen" :id="id" />
     </div>
@@ -72,7 +86,7 @@ export default {
 
 <style scoped>
 .badge--task {
-  width: 60px;
+  width: 34px;
   margin-top: -5px;
 }
 </style>
