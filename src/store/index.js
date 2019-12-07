@@ -20,6 +20,7 @@ export const store = new Vuex.Store({
       axios.post(BaseUrl + '/tasks', {
         ...payload,
         complete: false,
+        id: this.state.tasks.length + 1,
       }).then((response) => {
         commit('addTask', response.data)
       })
