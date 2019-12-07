@@ -1,7 +1,7 @@
 <template>
   <div>
     <h5>
-      Tasks
+      ToDo List
     </h5>
     <div>
       {{ new Date() | moment("dddd, MMMM Do YYYY") }}
@@ -11,12 +11,21 @@
       <div class="text-center pt-3" v-if="loading">
         <b-spinner small label="Small Spinner" type="grow" class="text-info"></b-spinner>
       </div>
-      <div v-for="task in incompleteTasks" v-bind:key="task.id">
-        <TaskBase v-bind="task" />
+      <div>
+        <div v-show="incompleteTasks.length === 0" class="text-muted">
+          <small>
+            <i>All tasks complete</i>
+          </small>
+        </div>
+        <div v-for="task in incompleteTasks" v-bind:key="task.id" class="mb-2">
+          <TaskBase v-bind="task" />
+        </div>
       </div>
       <hr />
-      <div v-for="task in completeTasks" v-bind:key="task.id">
-        <TaskBase v-bind="task" />
+      <div class="incomplete-task-list">
+        <div v-for="task in completeTasks" v-bind:key="task.id" class="mb-2">
+          <TaskBase v-bind="task" />
+        </div>
       </div>
       <hr />
       <div>
@@ -68,5 +77,8 @@ li {
 }
 a {
   color: #04b2e0;
+}
+.incomplete-task-list {
+  opacity: 0.5;
 }
 </style>

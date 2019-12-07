@@ -5,42 +5,35 @@
         <font-awesome-icon
           class="pointer mr-3"
           v-if="!complete"
-          size="sm"
           :icon="['far', 'square']"
           @click="updateTask({ id, complete: !complete })"
         />
         <font-awesome-icon
           class="pointer mr-3"
           v-if="complete"
-          size="sm"
           :icon="['far', 'check-square']"
           @click="updateTask({ id, complete: !complete })"
         />
       </b-col>
       <b-col>
         <b-row no-gutters>
-          <b-col cols="2" md="1">
-            <small>
-              <b-badge :variant="badgeVariant" class="mr-3 badge--task">{{type | capitalize}}</b-badge>
-            </small>
+          <b-col cols="2" md="1" class="mr-3">
+            <b-badge :variant="badgeVariant" class="badge--task">{{type | capitalize}}</b-badge>
           </b-col>
           <b-col>
-            <small>
               {{name}}
-            </small>
           </b-col>
         </b-row>
       </b-col>
       <b-col class="text-right" cols="2">
         <font-awesome-icon
           class="pointer mr-3"
-          size="xs"
+          size="sm"
           :icon="['fas', 'pen']"
           @click="updateEditTaskFormOpen({ id: id, isOpen: !editerIsOpen })"
         />
         <font-awesome-icon
           class="pointer"
-          size="sm"
           :icon="['far', 'trash-alt']" @click="deleteTask(id)"
         />
       </b-col>
@@ -86,7 +79,6 @@ export default {
 
 <style scoped>
 .badge--task {
-  width: 34px;
-  margin-top: -5px;
+  width: 43px;
 }
 </style>
