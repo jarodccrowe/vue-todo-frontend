@@ -10,7 +10,7 @@
       <div class="text-center pt-3" v-if="loading">
         <b-spinner small label="Small Spinner" type="grow" class="text-info"></b-spinner>
       </div>
-      <div class="incomplete-task-list mb-2">
+      <div class="incomplete-task-list mb-2" v-if="!loading">
         <div v-show="incompleteTasks.length === 0" class="text-muted">
           <small>
             <i>All tasks complete</i>
@@ -20,7 +20,7 @@
           <TaskBase v-bind="task"/>
         </div>
       </div>
-      <div class="complete-task-list mb-4">
+      <div class="complete-task-list mb-4" v-if="!loading" v-show="completeTasks.length !== 0">
         <div v-for="task in completeTasks" v-bind:key="task.id" class="">
           <TaskBase v-bind="task" class="task"/>
         </div>

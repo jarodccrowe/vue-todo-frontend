@@ -9,7 +9,7 @@
         v-model="form.name"
         type="text"
         required
-        placeholder="Add a new Task or Event"
+        placeholder="What do you need to do?"
         v-focus
         class="mb-2"
       ></b-form-input>
@@ -23,7 +23,6 @@
           <font-awesome-icon
             @click="closeForm"
             class="pointer"
-            v-if="!complete"
             :icon="['far', 'times-circle']"
             size="2x"
           />

@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-row no-gutters>
-      <b-col cols="1">
+      <b-col cols="1 checkbox-wrapper">
         <font-awesome-icon
           class="pointer mr-3"
           v-if="!complete && !loading"
@@ -21,7 +21,7 @@
           <b-col cols="2" md="1" class="mr-3">
             <b-badge :variant="badgeVariant" class="badge--task">{{type | capitalize}}</b-badge>
           </b-col>
-          <b-col>
+          <b-col class="label-wrapper">
               {{name}}
           </b-col>
         </b-row>
@@ -40,7 +40,7 @@
       </b-col>
     </b-row>
     <div>
-      <EditTaskBase v-if="editerIsOpen" :id="id" />
+      <EditTaskBase v-if="editerIsOpen" :id="id" class="pt-2" />
     </div>
   </div>
 </template>
@@ -88,5 +88,11 @@ export default {
 }
 .edit-button:hover {
   color: grey;
+}
+.checkbox-wrapper {
+  padding-top: 0.15rem;
+}
+.label-wrapper {
+  padding-top: 0.10rem;
 }
 </style>
