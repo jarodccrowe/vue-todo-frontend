@@ -1,17 +1,21 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <ToDo msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="container">
+    <ToDoBase />
   </div>
 </template>
 
 <script>
-import ToDo from './components/ToDo.vue'
+import ToDoBase from './components/ToDoBase.vue'
+import { store } from './store'
 
 export default {
   name: 'app',
   components: {
-    ToDo
+    ToDoBase
+  },
+  store,
+  created() {
+    this.$store.dispatch('loadTasks')
   }
 }
 </script>
@@ -21,8 +25,15 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  color: #0a374b;
+  max-width: 720px;
+}
+#app-logo {
+  width: 100px;
+}
+.pointer {
+  cursor: pointer;
 }
 </style>
