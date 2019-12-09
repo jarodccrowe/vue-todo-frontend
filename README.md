@@ -1,5 +1,11 @@
 # vue-todo-frontend
 
+## General Notes
+One limitation of the mocked backend is you can't
+- make a put request to a 'user created' task
+- make a delete request to a 'user create' task
+- the backend would manage ids
+
 ## Project setup
 ```
 npm install
