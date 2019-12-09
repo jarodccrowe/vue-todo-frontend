@@ -13,6 +13,7 @@ exports[`AddTaskBase.vue Matches snapshot 1`] = `
       focusable="false"
       role="img"
       style="display: none;"
+      test-data-addtask=""
       viewBox="0 0 448 512"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -41,12 +42,9 @@ exports[`AddTaskBase.vue Matches snapshot 1`] = `
       class="mb-2 custom-control custom-radio"
     >
       <input
-        aria-required="true"
         autocomplete="off"
         class="custom-control-input"
         id="__BVID__7"
-        name="some-radios"
-        required="required"
         test-data-radiotask=""
         type="radio"
         value="task"
@@ -63,12 +61,9 @@ exports[`AddTaskBase.vue Matches snapshot 1`] = `
       class="mb-2 custom-control custom-radio"
     >
       <input
-        aria-required="true"
         autocomplete="off"
         class="custom-control-input"
         id="__BVID__8"
-        name="some-radios"
-        required="required"
         type="radio"
         value="event"
       />
@@ -88,6 +83,7 @@ exports[`AddTaskBase.vue Matches snapshot 1`] = `
       >
         <button
           class="btn btn-sm btn-primary"
+          test-data-submit=""
           type="submit"
         >
           Add Task
@@ -130,9 +126,10 @@ exports[`EditTaskBase.vue Matches snapshot 1`] = `
       <input
         aria-required="true"
         class="form-control-sm form-control"
-        id="editInput"
+        id="__BVID__11"
         placeholder="What is your new task?"
         required="required"
+        test-data-editname=""
         type="text"
       />
        
@@ -191,6 +188,7 @@ exports[`TaskBase.vue Matches snapshot 1`] = `
         data-prefix="far"
         focusable="false"
         role="img"
+        test-data-completetask=""
         viewBox="0 0 448 512"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -240,9 +238,9 @@ exports[`TaskBase.vue Matches snapshot 1`] = `
         class="pointer mr-3 svg-inline--fa fa-pen fa-w-16 fa-sm"
         data-icon="pen"
         data-prefix="fas"
-        data-test-id="open-editor"
         focusable="false"
         role="img"
+        test-data-edittask=""
         viewBox="0 0 512 512"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -260,6 +258,7 @@ exports[`TaskBase.vue Matches snapshot 1`] = `
         data-prefix="far"
         focusable="false"
         role="img"
+        test-data-deletetask=""
         viewBox="0 0 448 512"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -328,6 +327,7 @@ exports[`ToDoBase.vue Matches snapshot 1`] = `
                 data-prefix="far"
                 focusable="false"
                 role="img"
+                test-data-completetask=""
                 viewBox="0 0 448 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -377,9 +377,9 @@ exports[`ToDoBase.vue Matches snapshot 1`] = `
                 class="pointer mr-3 svg-inline--fa fa-pen fa-w-16 fa-sm"
                 data-icon="pen"
                 data-prefix="fas"
-                data-test-id="open-editor"
                 focusable="false"
                 role="img"
+                test-data-edittask=""
                 viewBox="0 0 512 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -397,6 +397,7 @@ exports[`ToDoBase.vue Matches snapshot 1`] = `
                 data-prefix="far"
                 focusable="false"
                 role="img"
+                test-data-deletetask=""
                 viewBox="0 0 448 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -485,9 +486,9 @@ exports[`ToDoBase.vue Matches snapshot 1`] = `
                 class="pointer mr-3 svg-inline--fa fa-pen fa-w-16 fa-sm"
                 data-icon="pen"
                 data-prefix="fas"
-                data-test-id="open-editor"
                 focusable="false"
                 role="img"
+                test-data-edittask=""
                 viewBox="0 0 512 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -505,6 +506,7 @@ exports[`ToDoBase.vue Matches snapshot 1`] = `
                 data-prefix="far"
                 focusable="false"
                 role="img"
+                test-data-deletetask=""
                 viewBox="0 0 448 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -537,6 +539,7 @@ exports[`ToDoBase.vue Matches snapshot 1`] = `
             focusable="false"
             role="img"
             style="display: none;"
+            test-data-addtask=""
             viewBox="0 0 448 512"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -565,12 +568,9 @@ exports[`ToDoBase.vue Matches snapshot 1`] = `
             class="mb-2 custom-control custom-radio"
           >
             <input
-              aria-required="true"
               autocomplete="off"
               class="custom-control-input"
               id="__BVID__20"
-              name="some-radios"
-              required="required"
               test-data-radiotask=""
               type="radio"
               value="task"
@@ -587,12 +587,9 @@ exports[`ToDoBase.vue Matches snapshot 1`] = `
             class="mb-2 custom-control custom-radio"
           >
             <input
-              aria-required="true"
               autocomplete="off"
               class="custom-control-input"
               id="__BVID__21"
-              name="some-radios"
-              required="required"
               type="radio"
               value="event"
             />
@@ -612,6 +609,7 @@ exports[`ToDoBase.vue Matches snapshot 1`] = `
             >
               <button
                 class="btn btn-sm btn-primary"
+                test-data-submit=""
                 type="submit"
               >
                 Add Task

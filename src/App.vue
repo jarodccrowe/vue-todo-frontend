@@ -30,9 +30,6 @@ export default {
   color: #0a374b;
   max-width: 720px;
 }
-#app-logo {
-  width: 100px;
-}
 .pointer {
   cursor: pointer;
 }
