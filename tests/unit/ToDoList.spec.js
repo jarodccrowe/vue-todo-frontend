@@ -1,6 +1,7 @@
 import { mount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex';
 
+// dependancies
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import Moment from 'vue-moment';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -27,10 +28,14 @@ library.add(
   faCheckCircle,
 )
 
+// components to test
+
 import ToDoBase from '@/components/ToDoBase.vue'
 import AddTaskBase from '@/components/AddTaskBase.vue'
 import EditTaskBase from '@/components/EditTaskBase.vue'
 import TaskBase from '@/components/TaskBase.vue'
+
+// local vue store
 
 const localVue = createLocalVue()
 
