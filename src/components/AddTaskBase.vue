@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="text-md-left text-center">
-      <font-awesome-icon v-show="!formOpen" @click="openForm" class="pointer add-button" size="2x" :icon="['far', 'plus-square']"/>
+      <font-awesome-icon v-show="!formOpen" test-data-addtask @click="openForm" class="pointer add-button" size="2x" :icon="['far', 'plus-square']"/>
     </div>
     <b-form @submit="onSubmit" v-if="formOpen" class="mt-2">
       <b-form-input
-        id="input-1"
+        test-data-name
         v-model="form.name"
         type="text"
         required
@@ -13,11 +13,11 @@
         v-focus
         class="mb-2"
       ></b-form-input>
-      <b-form-radio v-model="form.type" required name="some-radios" value="task" class="mb-2">Task</b-form-radio>
-      <b-form-radio v-model="form.type" required name="some-radios" value="event" class="mb-2">Event</b-form-radio>
+      <b-form-radio test-data-radiotask v-model="form.type" required value="task" class="mb-2">Task</b-form-radio>
+      <b-form-radio v-model="form.type" required value="event" class="mb-2">Event</b-form-radio>
       <b-row no-gutters class="mt-3">
         <b-col>
-          <b-button type="submit" variant="primary" class="btn-sm">Add Task</b-button>
+          <b-button test-data-submit type="submit" variant="primary" class="btn-sm">Add Task</b-button>
         </b-col>
         <b-col class="text-right">
           <font-awesome-icon

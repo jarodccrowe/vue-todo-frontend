@@ -3,6 +3,7 @@
     <b-row no-gutters>
       <b-col cols="1 checkbox-wrapper">
         <font-awesome-icon
+          test-data-completetask
           class="pointer mr-3"
           v-if="!complete && !loading"
           :icon="['far', 'square']"
@@ -28,12 +29,14 @@
       </b-col>
       <b-col class="text-right" cols="2">
         <font-awesome-icon
+          test-data-edittask
           class="pointer mr-3"
           size="sm"
           :icon="['fas', 'pen']"
           @click="updateEditTaskFormOpen({ id: id, isOpen: !editerIsOpen })"
         />
         <font-awesome-icon
+          test-data-deletetask
           class="pointer"
           :icon="['far', 'trash-alt']" @click="deleteTask(id)"
         />

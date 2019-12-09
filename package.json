@@ -34,6 +34,7 @@
     "cypress": "^3.7.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "jest-serializer-vue": "^2.0.2",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
@@ -45,7 +46,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": 0
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     },

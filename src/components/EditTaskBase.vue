@@ -3,7 +3,7 @@
     <b-form @submit="onSubmit" class="row no-gutters">
       <div class="col-11 offset-1 card p-2">
         <b-form-input
-          id="editInput"
+          test-data-editname
           class="form-control-sm"
           v-model="form.name"
           type="text"
