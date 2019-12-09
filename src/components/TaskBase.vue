@@ -29,6 +29,7 @@
       </b-col>
       <b-col class="text-right" cols="2">
         <font-awesome-icon
+          v-if="!complete"
           test-data-edittask
           class="pointer mr-3"
           size="sm"
